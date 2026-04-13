@@ -1,5 +1,11 @@
 # Logseq Sync Server (Node Adapter)
 
+[![Build Image](https://github.com/yshalsager/logseq-sync-server/actions/workflows/build-sync-image.yml/badge.svg)](https://github.com/yshalsager/logseq-sync-server/actions/workflows/build-sync-image.yml)
+[![Bump Upstream Ref](https://github.com/yshalsager/logseq-sync-server/actions/workflows/bump-db-sync-ref.yml/badge.svg)](https://github.com/yshalsager/logseq-sync-server/actions/workflows/bump-db-sync-ref.yml)
+[![ghcr.io tag](https://ghcr-badge.egpl.dev/yshalsager/logseq-sync-server/latest_tag?trim=major&label=GitHub%20Registry&color=steelblue)](https://github.com/yshalsager/logseq-sync-server/pkgs/container/logseq-sync-server)
+[![ghcr.io size](https://ghcr-badge.egpl.dev/yshalsager/logseq-sync-server/size?tag=latest&label=Image%20size&color=steelblue)](https://github.com/yshalsager/logseq-sync-server/pkgs/container/logseq-sync-server)
+[![License](https://img.shields.io/github/license/yshalsager/logseq-sync-server.svg)](https://github.com/yshalsager/logseq-sync-server/blob/master/LICENSE)
+
 This repository provides a minimal self-host setup for Logseq's `db-sync` node adapter using Docker Compose.
 
 It includes:
