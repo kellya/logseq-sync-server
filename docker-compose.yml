@@ -1,0 +1,25 @@
+services:
+  sync:
+    image: ghcr.io/${GHCR_OWNER:-yshalsager}/logseq-sync-server:${IMAGE_TAG:-latest}
+    container_name: logseq-sync-server
+    env_file:
+      - path: .env
+        required: false
+      - path: .env.example
+        required: true
+    ports:
+      - '${SYNC_PORT:-8787}:8787'
+    volumes:
+      - sync_data:/app/data
+    read_only: true
+    tmpfs:
+      - /tmp
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    restart: unless-stopped
+    pull_policy: always
+
+volumes:
+  sync_data:

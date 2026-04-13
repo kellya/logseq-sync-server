@@ -1,0 +1,39 @@
+{
+  $schema: 'https://docs.renovatebot.com/renovate-schema.json',
+
+  extends: [
+    'config:best-practices',
+    ':dependencyDashboard',
+    ':timezone(Africa/Cairo)',
+    ':label(dependencies)',
+    'helpers:pinGitHubActionDigests',
+  ],
+
+  enabledManagers: ['github-actions', 'dockerfile', 'docker-compose', 'custom.regex'],
+
+  schedule: ['before 3am on saturday'],
+  minimumReleaseAge: '3 days',
+  rebaseWhen: 'behind-base-branch',
+
+  packageRules: [
+    {
+      matchManagers: ['github-actions'],
+      groupName: 'github actions',
+    },
+    {
+      matchManagers: ['dockerfile', 'docker-compose'],
+      groupName: 'container stack',
+    },
+  ],
+
+  customManagers: [
+    {
+      customType: 'regex',
+      managerFilePatterns: ['/^Dockerfile$/'],
+      matchStrings: ['ARG MISE_VERSION=(?<currentValue>[^\\n]+)'],
+      depNameTemplate: 'jdx/mise',
+      datasourceTemplate: 'github-releases',
+      versioningTemplate: 'regex:^v?(?<major>\\d{4})\\.(?<minor>\\d+)\\.(?<patch>\\d+)$',
+    },
+  ],
+}
